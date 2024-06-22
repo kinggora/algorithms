@@ -26,11 +26,7 @@ public class Runner {
         Map<String, Integer> completeMap = new HashMap<>();
         // key: 완주한 사람 이름, value: 같은 이름을 가진 사람 수
         for (String cName : completion) {
-            if (completeMap.containsKey(cName)) {
-                completeMap.put(cName, completeMap.get(cName) + 1);
-            } else {
-                completeMap.put(cName, 1);
-            }
+            completeMap.put(cName, completeMap.getOrDefault(cName, 0) + 1);
         }
 
         // map에 참가자 이름이 존재한다면 value--
