@@ -34,8 +34,8 @@ public class TheNumberOfMentor {
             int waitingTime = 0; // 대기 시간의 합
             Map<Integer, Queue<Integer>> scheduleMap = new HashMap<>(); // 유형별 멘토의 스케줄 시간
 
-            // 멘토를 상담 유형마다 우선순위 큐로 관리 -> 최소 스케줄 시간 반환
-            // 상담 유형마다 1명씩 배당
+            // 멘토의 스케줄 시간을 우선순위 큐로 관리 -> 최소 스케줄 시간 반환
+            // 상담 유형마다 1명씩 배치
             for(int i = 1; i <= k; i++) {
                 scheduleMap.put(i, new PriorityQueue<>(Comparator.naturalOrder()));
                 scheduleMap.get(i).add(0);
@@ -61,6 +61,9 @@ public class TheNumberOfMentor {
                     // 멘토가 상담이 끝났을 때 기다리던 참가자와 상담 시작 (대기시간 O)
                     waitingTime += scheduledTime - requestTime;
                     mentors.add(scheduledTime + consultTime);
+                }
+                if (waitingTime > min) {
+                    break;
                 }
             }
             min = Math.min(min, waitingTime);
