@@ -16,11 +16,11 @@ public class SearchPrime {
 
     int max = Integer.MIN_VALUE; // 생성 가능한 숫자 중 최대 값
     Set<Integer> numberSet = new HashSet<>();
-    char[] chars;
+    char[] digits;
     boolean[] visited;
 
     public int solution(String numbers) {
-        chars = numbers.toCharArray();
+        digits = numbers.toCharArray();
         // 숫자 카드로 가능한 모든 숫자 생성
         // 1 ~ numbers.length 길이의 숫자를 순차적으로 생성
         for(int i = 1; i <= numbers.length(); i++) {
@@ -59,10 +59,10 @@ public class SearchPrime {
             max = Math.max(max, num);
             return;
         }
-        for (int i = 0; i < chars.length; i++) {
+        for (int i = 0; i < digits.length; i++) {
             if(!visited[i]) {
                 visited[i] = true;
-                generateNumbers(str + chars[i], depth + 1, n);
+                generateNumbers(str + digits[i], depth + 1, n);
                 visited[i] = false;
             }
         }

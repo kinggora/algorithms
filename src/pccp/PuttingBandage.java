@@ -57,8 +57,7 @@ public class PuttingBandage {
             }
             hp -= attack[1]; // 몬스터 공격
             if(hp <= 0) { // 캐릭터 죽음
-                hp = -1;
-                break;
+                return -1;
             }
         }
         return hp;
